@@ -1,5 +1,7 @@
 package bynull.concurrency.safepublication.unsafe;
 
+import java.util.UUID;
+
 /**
  * Created by null on 2/8/14.
  */
@@ -9,24 +11,32 @@ public class MainUnsafe {
 
     public static void main(String[] args) {
 
-        while (true) {
+        for (int i = 0; i < 5; i++) {
             tredo();
         }
     }
 
     private static void tredo() {
-        new Thread(new Runnable() {
+        Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (obj == null) {
-                    obj = new UnsafeObject(1, "Fedya");
-                }
-                if (obj != null && obj.getAge() == null ||obj != null && obj.getName() == null) {
-                    System.out.println("AXTUUUUNG!!!");
-                }
+                while (true) {
+                    if (obj == null) {
+                        obj = new UnsafeObject(1, "Fedya");
+                    }
+                    try {
+                        if (obj.getAge() == null || obj.getName() == null) {
+                            System.out.println("AXTUUUUNG!!!");
+                        }
+                    } catch (Exception e) {
 
-                obj = null;
+                    }
+
+                    obj = null;
+                }
             }
-        }).start();
+        });
+        t.setName(UUID.randomUUID().toString());
+        t.start();
     }
 }
