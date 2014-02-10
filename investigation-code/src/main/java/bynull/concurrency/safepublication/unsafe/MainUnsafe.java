@@ -1,42 +1,58 @@
 package bynull.concurrency.safepublication.unsafe;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by null on 2/8/14.
  */
 public class MainUnsafe {
 
+    private static AtomicLong counter = new AtomicLong(1);
     private static UnsafeObject obj;
 
     public static void main(String[] args) {
+        while (true) {
+            tryToGetUnsafePublication();
 
-        for (int i = 0; i < 5; i++) {
-            tredo();
+            long currCounter = counter.get();
+            if (currCounter % 10000 == 0) {
+                System.out.println("Counter: " + counter.get());
+            }
         }
     }
 
-    private static void tredo() {
-        Thread t = new Thread(new Runnable() {
+    private static void tryToGetUnsafePublication() {
+        obj = null;
+        startNewThread(unsafePublication());
+    }
+
+    private static Runnable unsafePublication() {
+        return new Runnable() {
             @Override
             public void run() {
-                while (true) {
-                    if (obj == null) {
-                        obj = new UnsafeObject(1, "Fedya");
-                    }
-                    try {
-                        if (obj.getAge() == null || obj.getName() == null) {
-                            System.out.println("AXTUUUUNG!!!");
+                obj = new UnsafeObject(10, UUID.randomUUID().toString());
+                startNewThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (obj.getName() == null || obj.getAge() == null) {
+                                long currCounter = counter.get();
+                                System.out.println("Unsafe publication. Iteration: " + currCounter);
+                                System.exit(0);
+                            }
+                        } catch (Exception e) {
+                            //
                         }
-                    } catch (Exception e) {
-
+                        counter.getAndIncrement();
                     }
-
-                    obj = null;
-                }
+                });
             }
-        });
-        t.setName(UUID.randomUUID().toString());
-        t.start();
+        };
+    }
+
+    private static void startNewThread(Runnable r) {
+        new Thread(r).start();
     }
 }
