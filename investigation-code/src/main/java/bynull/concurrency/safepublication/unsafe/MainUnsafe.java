@@ -1,7 +1,6 @@
 package bynull.concurrency.safepublication.unsafe;
 
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -17,7 +16,7 @@ public class MainUnsafe {
             tryToGetUnsafePublication();
 
             long currCounter = counter.get();
-            if (currCounter % 10000 == 0) {
+            if (currCounter % 5000 == 0) {
                 System.out.println("Counter: " + counter.get());
             }
         }
@@ -37,9 +36,11 @@ public class MainUnsafe {
                     @Override
                     public void run() {
                         try {
-                            if (obj.getName() == null || obj.getAge() == null) {
+                            Integer age = obj.getAge();
+                            String name = obj.getName();
+                            if (name == null || age == null) {
                                 long currCounter = counter.get();
-                                System.out.println("Unsafe publication. Iteration: " + currCounter);
+                                System.out.println("Unsafe publication. Iteration: " + currCounter + "\n Object, name: " + name + ", age: " + age);
                                 System.exit(0);
                             }
                         } catch (Exception e) {
