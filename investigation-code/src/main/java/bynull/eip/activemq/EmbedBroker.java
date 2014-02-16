@@ -3,7 +3,6 @@ package bynull.eip.activemq;
 import org.apache.activemq.broker.BrokerService;
 
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by null on 2/16/14.
