@@ -13,7 +13,7 @@ public class WorkQueue {
     public void add(Command element) {
         synchronized (queue) {
             queue.offer(element);
-            queue.notifyAll();
+            queue.notify();
         }
     }
 
