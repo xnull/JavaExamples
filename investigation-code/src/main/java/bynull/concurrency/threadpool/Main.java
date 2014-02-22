@@ -8,18 +8,41 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        ThreadPool threadPool = new ThreadPool(10);
+        int POOL_SIZE = 5;
 
-        for (int i = 0; i < 1000; i++) {
-            threadPool.execute(new Command() {
-                @Override
-                public void execute(Worker worker) throws Exception {
-                    System.out.println("Hey hello. Worker: " + worker.getWorkerName());
-                }
-            });
+        ThreadPool threadPool = new ThreadPool(POOL_SIZE, getResulter());
+
+        for (int i = 0; i < POOL_SIZE; i++) {
+            threadPool.execute(getCommand());
         }
 
         TimeUnit.SECONDS.sleep(1);
         threadPool.shutdown();
+    }
+
+    private static Command getCommand() {
+        return new Command() {
+            private String result;
+
+            @Override
+            public void execute(Worker worker, CommandResult resulter) throws Exception {
+                result = "Hey hello. Worker: " + worker.getWorkerName();
+                resulter.result(this);
+            }
+
+            @Override
+            public String getResult() {
+                return result;
+            }
+        };
+    }
+
+    private static CommandResult getResulter() {
+        return new CommandResult() {
+            @Override
+            public void result(Command command) {
+                System.out.println("Command complete. Result: " + command.getResult());
+            }
+        };
     }
 }

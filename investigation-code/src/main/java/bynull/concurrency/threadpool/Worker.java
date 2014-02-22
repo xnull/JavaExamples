@@ -11,17 +11,19 @@ public class Worker implements Runnable {
 
     private WorkQueue queue;
     private String workerName;
+    private CommandResult resulter;
 
-    public Worker(WorkQueue queue, String workerName) {
+    public Worker(WorkQueue queue, String workerName, CommandResult resulter) {
         this.queue = queue;
         this.workerName = workerName;
+        this.resulter = resulter;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                queue.get().execute(this);
+                queue.get().execute(this, resulter);
             } catch (WorkQueueException e) {
                 break;
             } catch (Exception e) {
