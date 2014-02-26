@@ -43,7 +43,11 @@ public class Main {
         PriorityQueue<MyObject> queue = new PriorityQueue<>();
         queue.addAll(cache);
 
-        for (MyObject queueObj : queue) {
+        while(true){
+            MyObject queueObj = queue.poll();
+            if (queueObj == null){
+                break;
+            }
             System.out.println(queueObj.priority);
         }
     }
