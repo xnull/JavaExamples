@@ -13,6 +13,7 @@ public class Greeter extends UntypedActor {
 
     @Override
     public void onReceive(Object msg) {
+        System.out.println("Greeter thread: " + Thread.currentThread().getName());
         System.out.println("Hello, I am Creeter actor, my path is: " + getSelf().path());
         if (msg == Msg.GREET) {
             System.out.println("Hello World from greeter!");

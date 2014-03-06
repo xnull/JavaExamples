@@ -2,6 +2,7 @@ package bynull.architecture.dao;
 
 import bynull.architecture.localapi.dao.EntityLocalApi;
 import bynull.architecture.localapi.dao.MutableEntityLocalApi;
+import bynull.architecture.publicapi.dao.EntityMetaInfo;
 
 /**
  * Created by null on 2/13/14.
@@ -41,6 +42,16 @@ public class EntityImpl implements EntityLocalApi, MutableEntityLocalApi {
 
     @Override
     public EntityLocalApi getImmutableEntity() {
-        return this;
+        try {
+            return (EntityLocalApi) clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public EntityMetaInfo getMetaInfo() {
+        return null;
     }
 }

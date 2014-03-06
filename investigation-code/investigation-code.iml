@@ -22,6 +22,7 @@
     <orderEntry type="library" exported="" name="Gradle: akka-actor_2.10-2.2.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: scala-library-2.10.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: config-1.0.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-math3-3.2" level="project" />
   </component>
 </module>
 

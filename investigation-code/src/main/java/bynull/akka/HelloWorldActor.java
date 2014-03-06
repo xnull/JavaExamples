@@ -14,12 +14,15 @@ public class HelloWorldActor extends UntypedActor {
     private static class GreeterCreator implements Creator<Greeter> {
         @Override
         public Greeter create() throws Exception {
+            System.out.println("Build greeter in thread: " + Thread.currentThread().getName());
             return new Greeter();
         }
     }
 
     @Override
     public void preStart() {
+        System.out.println("Hello world actor thread: " + Thread.currentThread().getName());
+
         System.out.println("Hello, I am HelloWorld actor, my path is: " + getSelf().path());
         // create the greeter actor
         final ActorRef greeter =
@@ -32,9 +35,9 @@ public class HelloWorldActor extends UntypedActor {
     public void onReceive(Object msg) {
         if (msg == Greeter.Msg.DONE) {
             // when the greeter is done, stop this actor and with it the application
-            System.out.println("Goodby greeter");
+            System.out.println("Goodby greeter in thread: " + Thread.currentThread().getName());
             getContext().stop(getSelf());
-            System.out.println("Hello world actor stoped");
+            System.out.println("Hello world actor stoped : " + Thread.currentThread().getName());
         } else unhandled(msg);
     }
 
