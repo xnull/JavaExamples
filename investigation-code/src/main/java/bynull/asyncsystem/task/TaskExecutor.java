@@ -16,7 +16,6 @@ public class TaskExecutor extends UntypedActor {
         //pass task to the task handler and wait answer
 
         //send it asynchroniously
-        TypedActor.get
         taskHandler.execute(task);
     }
 
