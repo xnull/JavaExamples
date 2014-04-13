@@ -1,5 +1,7 @@
 package bynull.concurrency.threadpool;
 
+import bynull.Utils.Utils;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -41,7 +43,7 @@ public class Main {
         return new CommandResult() {
             @Override
             public void result(Command command) {
-                System.out.println("Command complete. Result: " + command.getResult());
+                Utils.print("Command complete. Result: " + command.getResult());
             }
         };
     }

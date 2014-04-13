@@ -7,7 +7,7 @@ public class DtoImpl {
 
     private String name;
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

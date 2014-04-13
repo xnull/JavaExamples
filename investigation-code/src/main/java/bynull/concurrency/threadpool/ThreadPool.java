@@ -24,7 +24,7 @@ public class ThreadPool {
         workQueue.add(command);
     }
 
-    public void shutdown(){
+    public void shutdown() {
         pool.shutdownNow();
     }
 }

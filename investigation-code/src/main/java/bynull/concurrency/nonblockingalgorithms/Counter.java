@@ -1,5 +1,7 @@
 package bynull.concurrency.nonblockingalgorithms;
 
+import bynull.Utils.Utils;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -13,7 +15,7 @@ public class Counter {
     private AtomicInteger counter = new AtomicInteger(0);
 
     public static void main(String[] args) {
-        System.out.println("Start program");
+        Utils.print("Start program");
         final Counter counter = new Counter();
         for (int i = 0; i < THEADS; i++) {
             startThread(counter);
@@ -45,7 +47,7 @@ public class Counter {
             if (result) {
                 break;
             } else {
-                System.out.println("Fail. Current value: " + currentValue);
+                Utils.print("Fail. Current value: " + currentValue);
             }
         }
     }

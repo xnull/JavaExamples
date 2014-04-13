@@ -1,5 +1,6 @@
 package bynull.architecture.business;
 
+import bynull.Utils.Utils;
 import bynull.architecture.dao.RepositoryImpl;
 import bynull.architecture.localapi.dao.EntityLocalApi;
 import bynull.architecture.localapi.dao.MutableEntityLocalApi;
@@ -17,6 +18,6 @@ public class ServiceImpl {
         resultEntity.setId(123L);
         resultEntity.setName(entity.getName());
 
-        System.out.println(resultEntity);
+        Utils.print(resultEntity);
     }
 }

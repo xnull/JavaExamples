@@ -5,7 +5,7 @@ package bynull.architecture.rest;
  */
 public class Request {
 
-    public String getName(){
+    public String getName() {
         return "hey hello!";
     }
 }

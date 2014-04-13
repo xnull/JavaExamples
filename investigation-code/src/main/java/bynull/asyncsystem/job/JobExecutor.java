@@ -23,7 +23,7 @@ public class JobExecutor {
     public static final TypedActorExtension TYPED_ACTOR_EXTENSION = TypedActor.get(AKKA);
 
 
-    public void execute(Workform wf){
+    public void execute(Workform wf) {
 
         /**
          * - load workform from db

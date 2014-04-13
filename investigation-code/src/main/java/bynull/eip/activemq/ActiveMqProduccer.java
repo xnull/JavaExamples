@@ -1,5 +1,6 @@
 package bynull.eip.activemq;
 
+import bynull.Utils.Utils;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
@@ -9,7 +10,7 @@ import javax.jms.*;
  */
 public class ActiveMqProduccer implements Runnable {
 
-    public void heyhello(){
+    public void heyhello() {
         try {
             // Create a ConnectionFactory
             ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
@@ -33,15 +34,14 @@ public class ActiveMqProduccer implements Runnable {
             TextMessage message = session.createTextMessage(text);
 
             // Tell the producer to send the message
-            System.out.println("Sent message: "+ message.hashCode() + " : " + Thread.currentThread().getName());
+            Utils.print("Sent message: " + message.hashCode() + " : " + Thread.currentThread().getName());
             producer.send(message);
 
             // Clean up
             session.close();
             connection.close();
-        }
-        catch (Exception e) {
-            System.out.println("Caught: " + e);
+        } catch (Exception e) {
+            Utils.print("Caught: " + e);
             e.printStackTrace();
         }
     }

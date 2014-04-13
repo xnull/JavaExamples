@@ -9,7 +9,7 @@ import java.util.Set;
 public class UndirectedGraph {
     private Set<UndirectedGraph> edges = new HashSet<>();
 
-    public void addEdge(UndirectedGraph edge){
+    public void addEdge(UndirectedGraph edge) {
         edges.add(edge);
     }
 }

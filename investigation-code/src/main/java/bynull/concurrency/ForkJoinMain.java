@@ -1,5 +1,7 @@
 package bynull.concurrency;
 
+import bynull.Utils.Utils;
+
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 
@@ -15,18 +17,18 @@ public class ForkJoinMain {
         forkJoinPool.execute(new ForkJoinTask<String>() {
             @Override
             public String getRawResult() {
-                System.out.println("get raw result");
+                Utils.print("get raw result");
                 return null;
             }
 
             @Override
             protected void setRawResult(String value) {
-                System.out.println("set raw result");
+                Utils.print("set raw result");
             }
 
             @Override
             protected boolean exec() {
-                System.out.println("exec");
+                Utils.print("exec");
                 return false;
             }
         });

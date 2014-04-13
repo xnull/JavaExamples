@@ -1,5 +1,7 @@
 package bynull.concurrency.nonblockingalgorithms.powcounter;
 
+import bynull.Utils.Utils;
+
 import java.math.BigInteger;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,9 +17,9 @@ public class Counter {
         private boolean resultIsPrinted = false;
 
         public void printResult(BigInteger result, AtomicInteger fails) {
-            //System.out.println("Length Kbytes: " + result.bitCount() / 1024 / 1024);
-            //System.out.println(getResultValue(result) + ". Fails: " + fails.get());
-            System.out.println(". Fails: " + fails.get());
+            //Utils.print("Length Kbytes: " + result.bitCount() / 1024 / 1024);
+            //Utils.print(getResultValue(result) + ". Fails: " + fails.get());
+            Utils.print(". Fails: " + fails.get());
             resultIsPrinted = true;
         }
 
@@ -25,7 +27,7 @@ public class Counter {
             return "Result: " + result.toString().length();
         }
 
-        public boolean alreadyPrinted(){
+        public boolean alreadyPrinted() {
             return resultIsPrinted;
         }
     }
@@ -44,7 +46,7 @@ public class Counter {
                 public void run() {
                     while (true) {
                         boolean finishIt = powerator.pow(tPool, resulter);
-                        if (finishIt){
+                        if (finishIt) {
                             break;
                         }
                     }
@@ -52,7 +54,7 @@ public class Counter {
             });
         }
 
-        while (true){
+        while (true) {
             TimeUnit.SECONDS.sleep(60);
         }
     }

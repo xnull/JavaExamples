@@ -15,8 +15,8 @@ public class PriorityQueueTest {
         queue.offer(2);
         queue.offer(3);
 
-        for (int i=0; i<5; i++) {
-            //System.out.println(queue.);
+        for (int i = 0; i < 5; i++) {
+            //Utils.print(queue.);
         }
     }
 }

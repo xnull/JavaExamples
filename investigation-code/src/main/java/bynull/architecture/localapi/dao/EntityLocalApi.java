@@ -7,5 +7,6 @@ import bynull.architecture.publicapi.dao.Entity;
  */
 public interface EntityLocalApi extends Entity {
     Long getId();
+
     String getName();
 }

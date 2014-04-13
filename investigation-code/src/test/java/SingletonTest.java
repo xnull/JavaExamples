@@ -8,7 +8,7 @@ import org.junit.Test;
 public class SingletonTest {
 
     @Test
-    public void testSingleton(){
+    public void testSingleton() {
         //Singleton.getInstance();
         Class<Singleton> x = Singleton.class;
     }

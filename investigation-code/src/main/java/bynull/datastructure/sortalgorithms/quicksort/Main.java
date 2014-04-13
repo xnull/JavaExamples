@@ -1,7 +1,8 @@
 package bynull.datastructure.sortalgorithms.quicksort;
 
+import bynull.Utils.Utils;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -17,9 +18,9 @@ public class Main {
             unsortedList.add(new Random().nextInt(100));
         }
 
-        quickSort(unsortedList, 0, unsortedList.size() - 1  );
+        quickSort(unsortedList, 0, unsortedList.size() - 1);
 
-        System.out.println(unsortedList);
+        Utils.print(unsortedList);
     }
 
     private static void quickSort(List<Integer> unsortedList, int low, int high) {

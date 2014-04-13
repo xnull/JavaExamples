@@ -1,13 +1,18 @@
 package bynull.concurrency.collections.priorityqueue;
 
-import java.util.*;
+import bynull.Utils.Utils;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.PriorityQueue;
+import java.util.Random;
 
 /**
  * Created by null on 2/26/14.
  */
 public class Main {
 
-    private static class MyObject implements Comparable<MyObject>{
+    private static class MyObject implements Comparable<MyObject> {
         private final int priority;
 
         private MyObject(int priority) {
@@ -16,11 +21,11 @@ public class Main {
 
         @Override
         public int compareTo(MyObject o) {
-            if (priority > o.priority){
+            if (priority > o.priority) {
                 return 1;
             }
 
-            if (priority < o.priority){
+            if (priority < o.priority) {
                 return -1;
             }
 
@@ -43,12 +48,12 @@ public class Main {
         PriorityQueue<MyObject> queue = new PriorityQueue<>();
         queue.addAll(cache);
 
-        while(true){
+        while (true) {
             MyObject queueObj = queue.poll();
-            if (queueObj == null){
+            if (queueObj == null) {
                 break;
             }
-            System.out.println(queueObj.priority);
+            Utils.print(queueObj.priority);
         }
     }
 }

@@ -1,6 +1,8 @@
 package bynull.datastructure.trees.binary.functionalcoding;
 
-import bynull.datastructure.trees.binary.functionalcoding.BinaryTree.*;
+import bynull.datastructure.trees.binary.functionalcoding.BinaryTree.Empty;
+import bynull.datastructure.trees.binary.functionalcoding.BinaryTree.Leaf;
+import bynull.datastructure.trees.binary.functionalcoding.BinaryTree.Node;
 
 /**
  * Created by null on 2/23/14.

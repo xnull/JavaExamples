@@ -1,5 +1,6 @@
 package bynull.akkapulco.impl;
 
+import bynull.Utils.Utils;
 import bynull.akkapulco.api.Task;
 
 /**
@@ -8,6 +9,6 @@ import bynull.akkapulco.api.Task;
 public class TaskImpl implements Task<String> {
     @Override
     public void execute(String parameter) {
-        System.out.println("Hey hello");
+        Utils.print("Hey hello");
     }
 }

@@ -11,7 +11,7 @@ import bynull.architecture.rest.mapper.request.RequestToDtoMapper;
  */
 public class RestEndpoint {
 
-    public void execute(Request request){
+    public void execute(Request request) {
         ServiceImpl service = new ServiceImpl();
 
         Mapper<Request, DtoImpl> requestMapper = new RequestToDtoMapper();

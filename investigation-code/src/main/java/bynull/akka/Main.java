@@ -1,7 +1,8 @@
 package bynull.akka;
 
-import akka.actor.*;
+import akka.actor.Props;
 import akka.japi.Creator;
+import bynull.Utils.Utils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,13 +13,13 @@ public class Main {
     private static class HelloWorldCreator implements Creator<HelloWorldActor> {
         @Override
         public HelloWorldActor create() throws Exception {
-            System.out.println("Build hello world actor in thread: " + Thread.currentThread().getName());
+            Utils.print("Build hello world actor in thread: " + Thread.currentThread().getName());
             return new HelloWorldActor();
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("Main thread: " + Thread.currentThread().getName());
+        Utils.print("Main thread: " + Thread.currentThread().getName());
 
         HelloWorldCreator hwCreator = new HelloWorldCreator();
         //TYPED_ACTOR_EXTENSION.typedActorOf(new TypedProps())

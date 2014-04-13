@@ -5,8 +5,8 @@ import bynull.architecture.rest.DtoImpl;
 import bynull.architecture.rest.Request;
 
 /**
-* Created by null on 2/13/14.
-*/
+ * Created by null on 2/13/14.
+ */
 public class RequestToDtoMapper implements Mapper<Request, DtoImpl> {
 
     @Override

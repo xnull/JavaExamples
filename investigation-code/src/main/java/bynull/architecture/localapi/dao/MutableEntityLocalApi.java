@@ -7,5 +7,6 @@ import bynull.architecture.publicapi.dao.MutableEntity;
  */
 public interface MutableEntityLocalApi extends MutableEntity<EntityLocalApi> {
     void setId(Long id);
+
     void setName(String name);
 }

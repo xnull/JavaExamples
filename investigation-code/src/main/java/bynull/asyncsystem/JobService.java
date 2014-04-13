@@ -5,7 +5,7 @@ package bynull.asyncsystem;
  */
 public class JobService {
 
-    public void doIt(){
+    public void doIt() {
 
     }
 }

@@ -5,23 +5,23 @@
     <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
-                   value="%d{DATE} [%20.20t] %-5p %30.30c{2} %x - %m (%M:%L) %n " />
+                   value="%d{DATE} [%20.20t] %-5p %30.30c{2} %x - %m (%M:%L) %n "/>
         </layout>
     </appender>
 
     <logger name="org.apache.http" additivity="false">
-        <level value="info" />
-        <appender-ref ref="consoleAppender" />
+        <level value="info"/>
+        <appender-ref ref="consoleAppender"/>
     </logger>
 
     <logger name="bynull" additivity="false">
-        <level value="trace" />
-        <appender-ref ref="consoleAppender" />
+        <level value="trace"/>
+        <appender-ref ref="consoleAppender"/>
     </logger>
 
     <root>
         <priority value="info"></priority>
-        <appender-ref ref="consoleAppender" />
+        <appender-ref ref="consoleAppender"/>
     </root>
 
 </log4j:configuration>

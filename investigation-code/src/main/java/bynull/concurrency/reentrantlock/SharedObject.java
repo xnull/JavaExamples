@@ -1,5 +1,7 @@
 package bynull.concurrency.reentrantlock;
 
+import bynull.Utils.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
@@ -13,19 +15,19 @@ public class SharedObject {
     private List<Integer> list = new ArrayList<>();
 
     public void addElement(Integer element) {
-        System.out.println("Accuire lock. Thread: " + getThreadName());
+        Utils.print("Accuire lock. Thread: " + getThreadName());
         lock.lock();
-        System.out.println("Lock is acuired. Thread: " + getThreadName());
+        Utils.print("Lock is acuired. Thread: " + getThreadName());
 
-        if (lock.getQueueLength() > 1){
-            System.out.println("Holded threads: " + lock.getQueueLength() + ". List size: " + list.size());
+        if (lock.getQueueLength() > 1) {
+            Utils.print("Holded threads: " + lock.getQueueLength() + ". List size: " + list.size());
         }
 
         try {
-            System.out.println("Add element to list. In thread: " + getThreadName());
+            Utils.print("Add element to list. In thread: " + getThreadName());
             list.add(element);
         } finally {
-            System.out.println("Unlock. In thread: " + getThreadName());
+            Utils.print("Unlock. In thread: " + getThreadName());
             lock.unlock();
         }
     }

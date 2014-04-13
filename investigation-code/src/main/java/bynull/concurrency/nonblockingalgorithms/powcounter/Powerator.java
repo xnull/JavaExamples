@@ -1,7 +1,6 @@
 package bynull.concurrency.nonblockingalgorithms.powcounter;
 
 import java.math.BigInteger;
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -64,7 +63,7 @@ public class Powerator {
 
             if (success) {
                 return false;
-            }else {
+            } else {
                 fails.getAndIncrement();
             }
         }

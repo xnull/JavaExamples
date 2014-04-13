@@ -1,15 +1,9 @@
 package bynull.eip.activemq;
 
+import bynull.Utils.Utils;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-import javax.jms.Connection;
-import javax.jms.Destination;
-import javax.jms.ExceptionListener;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+import javax.jms.*;
 
 /**
  * Created by null on 2/16/14.
@@ -42,21 +36,21 @@ public class ActiveMqConsumer implements Runnable, ExceptionListener {
             if (message instanceof TextMessage) {
                 TextMessage textMessage = (TextMessage) message;
                 String text = textMessage.getText();
-                System.out.println("Received: " + text);
+                Utils.print("Received: " + text);
             } else {
-                System.out.println("Received: " + message);
+                Utils.print("Received: " + message);
             }
 
             consumer.close();
             session.close();
             connection.close();
         } catch (Exception e) {
-            System.out.println("Caught: " + e);
+            Utils.print("Caught: " + e);
             e.printStackTrace();
         }
     }
 
     public synchronized void onException(JMSException ex) {
-        System.out.println("JMS Exception occured.  Shutting down client.");
+        Utils.print("JMS Exception occured.  Shutting down client.");
     }
 }

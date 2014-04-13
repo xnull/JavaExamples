@@ -1,5 +1,6 @@
 package bynull.eip.activemq;
 
+import bynull.Utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +20,7 @@ public class Main {
         pause();
         runConsumer();
 
-        System.out.println("This is the end");
+        Utils.print("This is the end");
     }
 
     private static void pause() throws InterruptedException {

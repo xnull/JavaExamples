@@ -1,5 +1,7 @@
 package bynull.concurrency.safepublication.unsafe;
 
+import bynull.Utils.Utils;
+
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -17,7 +19,7 @@ public class MainUnsafe {
 
             long currCounter = counter.get();
             if (currCounter % 5000 == 0) {
-                System.out.println("Counter: " + counter.get());
+                Utils.print("Counter: " + counter.get());
             }
         }
     }
@@ -40,7 +42,7 @@ public class MainUnsafe {
                             String name = obj.getName();
                             if (name == null || age == null) {
                                 long currCounter = counter.get();
-                                System.out.println("Unsafe publication. Iteration: " + currCounter + "\n Object, name: " + name + ", age: " + age);
+                                Utils.print("Unsafe publication. Iteration: " + currCounter + "\n Object, name: " + name + ", age: " + age);
                                 System.exit(0);
                             }
                         } catch (Exception e) {
