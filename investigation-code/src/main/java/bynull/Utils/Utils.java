@@ -13,6 +13,6 @@ public class Utils {
         Date time = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss,SSS");
 
-        System.out.println(MessageFormat.format("[{0}] {1}", dateFormat.format(time), msg));
+        System.out.println(MessageFormat.format("[{0}] [{1}] {2}", dateFormat.format(time), Thread.currentThread().getName(), msg));
     }
 }

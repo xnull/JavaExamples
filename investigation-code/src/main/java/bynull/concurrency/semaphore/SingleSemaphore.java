@@ -12,27 +12,28 @@ public class SingleSemaphore {
 
     public static void main(String[] args) throws InterruptedException {
         final Semaphore sema = new Semaphore(1);
-        Utils.print("Main. aquire sema");
+        Utils.print("aquire sema");
         sema.acquire();
 
         new Thread() {
             @Override
             public void run() {
                 try {
-                    Utils.print("Thread. aquire sema");
+                    Utils.print("aquire sema");
                     sema.acquire();
-                    Utils.print("Thread. doing actions");
+                    Utils.print("doing actions");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Utils.print("Thread. Release sema");
+                    Utils.print("Release sema");
                     sema.release();
                 }
             }
         }.start();
 
         TimeUnit.SECONDS.sleep(1);
-        Utils.print("Main. release sema");
+        Utils.print("release sema in a second");
+        TimeUnit.SECONDS.sleep(1);
         sema.release();
     }
 }
