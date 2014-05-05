@@ -1,0 +1,11 @@
+subprojects {
+    repositories {
+        maven { url 'http://nwnexus.samsung.ru/nexus/content/groups/public/' }
+        mavenLocal()
+        mavenCentral()
+    }
+
+    //dependencies {
+        //testCompile 'junit:junit:4.11'
+    //}
+}
