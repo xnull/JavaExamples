@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+dependencies{
+    testCompile 'org.apache.hadoop:hadoop-test:1.2.1'
+    testCompile 'org.apache.hadoop:hadoop-hdfs:2.4.0'
+    //testCompile 'org.apache.hadoop:hadoop-minicluster:2.4.0'
+    testCompile 'junit:junit:4.11'
+}
