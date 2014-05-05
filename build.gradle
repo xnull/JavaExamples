@@ -1,6 +1,5 @@
 subprojects {
     repositories {
-        maven { url 'http://nwnexus.samsung.ru/nexus/content/groups/public/' }
         mavenLocal()
         mavenCentral()
     }
