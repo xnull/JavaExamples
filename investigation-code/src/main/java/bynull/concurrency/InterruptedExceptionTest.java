@@ -19,10 +19,15 @@ public class InterruptedExceptionTest {
     }
 
     private static class MyWorker implements Runnable {
+        private boolean alyarm;
 
         @Override
         public void run() {
             while (true) {
+                if (Thread.currentThread().isInterrupted() && !alyarm){
+                    alyarm = true;
+                    System.out.println("Thread: " + Thread.currentThread().getName() + " - Bdidish!!!");
+                }
                 Thread.yield();
             }
         }
