@@ -37,16 +37,11 @@ public class Main {
 
         Random rnd = new Random();
 
-        Collection<MyObject> cache = new ArrayList<>();
-        System.out.print("cache: ");
-        for (int i = 0; i < 10; i++) {
-            MyObject myObj = new MyObject(rnd.nextInt(100));
-            System.out.print(myObj.priority + ", ");
-            cache.add(myObj);
-        }
-
         PriorityQueue<MyObject> queue = new PriorityQueue<>();
-        queue.addAll(cache);
+        //queue.addAll(cache);
+        for (int i = 0; i < 10; i++) {
+            queue.add(new MyObject(rnd.nextInt(100)));
+        }
 
         while (true) {
             MyObject queueObj = queue.poll();
