@@ -83,14 +83,15 @@ public class Main {
 
     private static File createTestDirectoryAndFiles() throws IOException {
         File rootDir = createDirectory(new File(System.getProperty("java.io.tmpdir")), String.valueOf(RND.nextLong()));
-        File child1 = createDirectory(rootDir, "child1");
-        File child2 = createDirectory(rootDir, "child2");
-        File child3 = createDirectory(rootDir, "child3");
+
+        for (int i = 0; i < 10; i++) {
+            createDirectory(rootDir, "child-" + i);
+        }
 
         new File(rootDir, RND.nextLong() + ".txt").createNewFile();
         for (int i = 0; i < 100; i++) {
-            new File(child1, RND.nextLong() + ".txt").createNewFile();
-            new File(child2, RND.nextLong() + ".txt").createNewFile();
+            new File(new File(rootDir, "child-1"), RND.nextLong() + ".txt").createNewFile();
+            new File(new File(rootDir, "child-2"), RND.nextLong() + ".txt").createNewFile();
         }
         return rootDir;
     }
