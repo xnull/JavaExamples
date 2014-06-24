@@ -67,7 +67,7 @@ public class Main {
 
         File rootDir = createTestDirectoryAndFiles();
 
-        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        ForkJoinPool forkJoinPool = new ForkJoinPool(10);
 
         List<String> result = forkJoinPool.invoke(new DirectoryReader(rootDir));
 
@@ -83,15 +83,17 @@ public class Main {
 
     private static File createTestDirectoryAndFiles() throws IOException {
         File rootDir = createDirectory(new File(System.getProperty("java.io.tmpdir")), String.valueOf(RND.nextLong()));
+        new File(rootDir, RND.nextLong() + ".txt").createNewFile();
 
-        for (int i = 0; i < 10; i++) {
+        int childDirs = 10;
+        for (int i = 0; i < childDirs; i++) {
             createDirectory(rootDir, "child-" + i);
         }
 
-        new File(rootDir, RND.nextLong() + ".txt").createNewFile();
         for (int i = 0; i < 100; i++) {
-            new File(new File(rootDir, "child-1"), RND.nextLong() + ".txt").createNewFile();
-            new File(new File(rootDir, "child-2"), RND.nextLong() + ".txt").createNewFile();
+            for (int j = 0; j < childDirs; j++) {
+                new File(new File(rootDir, "child-" + j), RND.nextLong() + ".txt").createNewFile();
+            }
         }
         return rootDir;
     }
