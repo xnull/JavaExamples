@@ -3,3 +3,5 @@ include 'bigdato:hadoop-test'
 include 'bigdato:cassandra'
 include 'async-systems'
 include 'javascript'
+
+include 'bigdato:redis:redis-data'
